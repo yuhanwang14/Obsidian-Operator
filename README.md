@@ -241,6 +241,13 @@ This is an opinionated system — the vault structure, note conventions, and ski
 2. **Individual skills** can be modified after installation (they live in `~/.claude/skills/` or `~/.agents/skills/`).
 3. **Vault structure** can be extended — add new folders as needed. Avoid renaming the core 6 folders without updating CLAUDE.md and skill references.
 
+## Contributing
+
+We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for how to get started.
+
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Security Policy](SECURITY.md)
+
 ## License
 
-MIT
+[MIT](LICENSE)
