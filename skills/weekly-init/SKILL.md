@@ -100,6 +100,19 @@ Initialize the current week: create the week folder, carry unfinished items from
 
    **Fallback:** If `data.json` is unreadable or `rawIcals` is empty, skip silently — do not error.
 
+7d. **Populate `## Meetings` from Upcoming Events files** — Glob for all `02_Projects/**/Upcoming Events.md` files (recursive). For each file:
+
+   - Read `## Events` section and find all `[ ]` entries whose parsed date falls within the new week (Mon–Sun).
+   - Parse the date from the bold text (e.g. `**Thu Apr 9, 5:00 PM**`).
+   - For each matching event:
+     - Add to Blockers `## Meetings` using the same entry format, with source attribution `[<project>]`.
+     - Carry sub-bullets (location, notes, etc.) into the Blockers entry.
+     - Mark the event in the Upcoming Events file: replace `- [ ]` with `- [x] consumed YYYY-WXX:` on that line.
+   - **Skip duplicates** — deduplicate by date + fuzzy title match against entries from Steps 7, 7b, and 7c.
+   - **Skip past events** — if the event date is before the new week's Monday and still `[ ]`, flag it in the console: "Stale event in <file>: <event name> (<date>)". Do not consume or carry it.
+
+   **Fallback:** If no Upcoming Events files exist, skip silently.
+
 8. **Open the file** — Run `obsidian open path="01_Execution/YYYY-WXX/Weekly Todo.md"` to open the file in Obsidian so the user can review and adjust before the week begins.
 
 ## Output File Structure

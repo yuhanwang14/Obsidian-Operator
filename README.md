@@ -141,6 +141,7 @@ See [CLAUDE.md](CLAUDE.md) for full conventions, frontmatter spec, checkbox stat
 | `project-init` | Scaffold a new project — creates folder structure + project note with frontmatter |
 | `project-sync` | Aggregate knowledge notes + weekly reviews into the project note — Knowledge Base, Weekly Progress, Strategic Signals |
 | `deadline-plan` | Backward-schedule deadlines with ramp algorithm — task queues, automatic progress tracking, weekly allocation |
+| `add-events` | Batch-add events to Apple Calendar + Reminders — stores in `Upcoming Events.md` for pipeline integration, routes current-week events to Blockers |
 | `decision` | Stress-test a decision — assumptions, risks, alternatives, recommendation |
 | `synthesize` | Distill notes into structured knowledge (concept / course / brainstorm templates) |
 
@@ -242,6 +243,10 @@ Cycle repeats
 /synthesize   → 04_Knowledge/[subfolder]/                 (concept | course | brainstorm)
 /decision     → 04_Knowledge/[P]/Decision Challenges/     (stress-test)
 /deadline-plan→ 02_Projects/[path]/Deadline Plan.md       (ramp schedule + task queue)
+/add-events  → Apple Calendar "Operator"                    (timed + all-day events)
+             → Apple Reminders "Operator"                    (associated deadlines)
+             → 02_Projects/[P]/Upcoming Events.md           (staging for /weekly-init)
+             → 01_Execution/YYYY-WXX/Blockers.md            (current-week only)
 /daily-github → 04_Knowledge/GitHub/                      (daily trending)
 /ai-weekly-digest → 04_Knowledge/AI-Weekly/               (weekly AI landscape)
 /quarterly-plan   → 00_Strategy/YYYY-QX/                  (plan | review | pulse)
@@ -264,6 +269,8 @@ Cycle repeats
             ──► /meeting-prep (tomorrow's meetings)
 
 /meeting ───► (self-contained: transcript + knowledge + action routing)
+
+/add-events ► (consumed by /weekly-init Step 7d when week arrives)
 
 /weekly-review (standalone)
 /project-sync  (standalone — pure synthesis)
