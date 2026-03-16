@@ -2,7 +2,7 @@
 
 An AI-native personal operating system built on Obsidian + Claude Code.
 
-Operator is an opinionated system of 16 Claude Code skills that turn an Obsidian vault into a structured execution engine — daily briefings, weekly reviews, strategic planning, meeting processing, deadline tracking, and knowledge synthesis, all orchestrated by AI agents.
+Operator is an opinionated system of 17 Claude Code skills that turn an Obsidian vault into a structured execution engine — daily briefings, weekly reviews, strategic planning, meeting processing, deadline tracking, and knowledge synthesis, all orchestrated by AI agents.
 
 ## Quick Start
 
@@ -16,9 +16,17 @@ cp -r obsidian-operator/vault-template/* /path/to/your/vault/
 cp obsidian-operator/CLAUDE.md /path/to/your/vault/
 ```
 
-### 2. Install skills
+### 2. Install the plugin
 
-Install all skills at once, or pick the ones you need:
+Install as a Claude Code plugin (recommended — includes auto-updates):
+
+```bash
+# Add the marketplace and install (auto-updates enabled)
+/plugin marketplace add https://github.com/yuhanwang14/obsidian-operator
+/plugin install obsidian-operator
+```
+
+Or install individual skills manually:
 
 ```bash
 # Install individual skills
@@ -29,10 +37,10 @@ npx skills add yuhanwang14/obsidian-operator@meeting
 npx skills add yuhanwang14/obsidian-operator@project-init
 # ... etc
 
-# Or install all 16
+# Or install all 17
 for skill in daily-init weekly-init weekly-review daily-github ai-weekly-digest \
   meeting meeting-prep project-init project-sync quarterly-plan annual-vision \
-  deadline-plan decision synthesize organize add-events; do
+  deadline-plan decision synthesize organize add-events link-enrich; do
   npx skills add yuhanwang14/obsidian-operator@$skill
 done
 ```
@@ -150,6 +158,7 @@ See [CLAUDE.md](CLAUDE.md) for full conventions, frontmatter spec, checkbox stat
 | Skill | Description |
 |-------|-------------|
 | `organize` | Scan vault for misplaced files, missing frontmatter, notes to split/merge (read-only recommendations) |
+| `link-enrich` | Three modes: `scan` (audit unlinked mentions, orphans, graph density), `apply` (preview + insert wiki-links), `moc` (generate Map of Content index notes) |
 
 ## System Architecture
 
@@ -272,8 +281,9 @@ Cycle repeats
 
 /add-events ► (consumed by /weekly-init Step 7d when week arrives)
 
-/weekly-review (standalone)
-/project-sync  (standalone — pure synthesis)
+/weekly-review  (standalone)
+/project-sync   (standalone — pure synthesis)
+/link-enrich    (standalone — vault graph optimizer)
 ```
 
 ## Customization

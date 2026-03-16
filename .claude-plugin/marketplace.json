@@ -1,0 +1,22 @@
+{
+  "name": "obsidian-operator",
+  "owner": {
+    "name": "Yuhan Wang",
+    "email": "yuhanwang14@github.com"
+  },
+  "metadata": {
+    "description": "Obsidian Operator — an AI-native personal operating system built on Obsidian + Claude Code",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "obsidian-operator",
+      "source": {
+        "source": "github",
+        "repo": "yuhanwang14/obsidian-operator"
+      },
+      "description": "All 17 Operator skills — daily ops, weekly planning, strategic reviews, meetings, projects, knowledge synthesis, and vault maintenance.",
+      "version": "1.0.0"
+    }
+  ]
+}
