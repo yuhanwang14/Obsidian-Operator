@@ -2,7 +2,7 @@
 
 An AI-native personal operating system built on Obsidian + Claude Code.
 
-Operator is an opinionated system of 17 Claude Code skills that turn an Obsidian vault into a structured execution engine — daily briefings, weekly reviews, strategic planning, meeting processing, deadline tracking, and knowledge synthesis, all orchestrated by AI agents.
+Operator is an opinionated system of 19 Claude Code skills that turn an Obsidian vault into a structured execution engine — daily briefings, weekly reviews, strategic planning, meeting processing, deadline tracking, knowledge synthesis, and a content engine for publishing, all orchestrated by AI agents.
 
 ## Quick Start
 
@@ -37,10 +37,11 @@ npx skills add yuhanwang14/obsidian-operator@meeting
 npx skills add yuhanwang14/obsidian-operator@project-init
 # ... etc
 
-# Or install all 17
+# Or install all 19
 for skill in daily-init weekly-init weekly-review daily-github ai-weekly-digest \
   meeting meeting-prep project-init project-sync quarterly-plan annual-vision \
-  deadline-plan decision synthesize organize add-events link-enrich; do
+  deadline-plan decision synthesize organize add-events link-enrich \
+  content-extract content-draft; do
   npx skills add yuhanwang14/obsidian-operator@$skill
 done
 ```
@@ -112,6 +113,7 @@ If not configured, `/daily-init` skips the email section silently.
 03_Thinking/            — reflections, ideas, mental models
 04_Knowledge/           — research, meeting knowledge, decision analyses, digests
 05_Archive/             — inactive or completed material
+06_Content/             — content backlog, drafts, voice guide, published archive
 ```
 
 See [CLAUDE.md](CLAUDE.md) for full conventions, frontmatter spec, checkbox states, and AI agent instructions.
@@ -153,6 +155,13 @@ See [CLAUDE.md](CLAUDE.md) for full conventions, frontmatter spec, checkbox stat
 | `decision` | Stress-test a decision — assumptions, risks, alternatives, recommendation |
 | `synthesize` | Distill notes into structured knowledge (concept / course / brainstorm templates) |
 
+### Content Engine
+
+| Skill | Description |
+|-------|-------------|
+| `content-extract` | Scan yesterday's notes for publishable insights — appends 0-3 ideas to `06_Content/Backlog.md` with pillar tags. Integrated into `/daily-init` post-briefing. Also includes catch-up pass for unscanned this-week notes. |
+| `content-draft` | Generate platform-specific drafts from backlog items or notes — LinkedIn (delegates to `linkedin-content`), Twitter/X threads, non-technical articles (uses Voice Guide), technical blogs (delegates to `technical-blog-writing`), newsletters |
+
 ### Vault Maintenance
 
 | Skill | Description |
@@ -177,6 +186,7 @@ See [CLAUDE.md](CLAUDE.md) for full conventions, frontmatter spec, checkbox stat
                         │  2.  /weekly-init    (open new week)        │
                         │  3.  briefing        (today's data)         │
                         │  4.  /daily-github   (trending repos)       │
+                        │  5.  /content-extract (content ideas)       │
                         └─────────────────────────────────────────────┘
 
                         ┌─────────────────────────────────────────────┐
@@ -191,6 +201,7 @@ See [CLAUDE.md](CLAUDE.md) for full conventions, frontmatter spec, checkbox stat
                         │  2.  /weekly-init if missing                │
                         │  3.  briefing        (today's data)         │
                         │  4.  /daily-github   (trending repos)       │
+                        │  5.  /content-extract (content ideas)       │
                         └─────────────────────────────────────────────┘
 ```
 
@@ -263,6 +274,9 @@ Cycle repeats
 
 /project-init → 02_Projects/[P]/ + 04_Knowledge/[P]/     (scaffolding)
 /project-sync → 02_Projects/[P]/[P].md                   (Knowledge Base + Strategic Signals)
+
+/content-extract → 06_Content/Backlog.md                  (content ideas from vault notes)
+/content-draft   → 06_Content/Drafts/YYYY-MM-DD-slug/    (LinkedIn, Twitter, article, newsletter)
 ```
 
 ### Dependency graph
@@ -275,6 +289,7 @@ Cycle repeats
             ──► /quarterly-plan init (new-quarter boundary)
             ──► /weekly-init (if missing)
             ──► /daily-github (post-briefing)
+            ──► /content-extract (post-briefing, after daily-github)
             ──► /meeting-prep (tomorrow's meetings)
 
 /meeting ───► (self-contained: transcript + knowledge + action routing)
@@ -284,6 +299,8 @@ Cycle repeats
 /weekly-review  (standalone)
 /project-sync   (standalone — pure synthesis)
 /link-enrich    (standalone — vault graph optimizer)
+/content-extract (standalone or via /daily-init post-briefing)
+/content-draft  (standalone — reads backlog or notes, generates drafts)
 ```
 
 ## Customization
@@ -292,7 +309,7 @@ This is an opinionated system — the vault structure, note conventions, and ski
 
 1. **CLAUDE.md** is the configuration layer. Edit folder paths, frontmatter fields, checkbox states, or agent behavior there.
 2. **Individual skills** can be modified after installation (they live in `~/.claude/skills/` or `~/.agents/skills/`).
-3. **Vault structure** can be extended — add new folders as needed. Avoid renaming the core 6 folders without updating CLAUDE.md and skill references.
+3. **Vault structure** can be extended — add new folders as needed. Avoid renaming the core 7 folders without updating CLAUDE.md and skill references.
 
 ## Contributing
 
