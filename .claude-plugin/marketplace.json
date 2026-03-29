@@ -12,7 +12,7 @@
     {
       "name": "obsidian-operator",
       "source": "./",
-      "description": "All 19 Operator skills — daily ops, weekly planning, strategic reviews, meetings, projects, knowledge synthesis, vault maintenance, and content engine.",
+      "description": "All 19 Operator skills — daily ops, weekly planning, strategic reviews, meetings, projects, knowledge synthesis, vault maintenance, and content engine with newsletter scanning.",
       "version": "1.2.0"
     }
   ]
