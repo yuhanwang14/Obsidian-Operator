@@ -17,7 +17,7 @@ Initialize the current week: create the week folder, carry unfinished items from
 
 2. **Create the week folder** — Ensure `01_Execution/YYYY-[W]WW/` exists. No-op if it already exists.
 
-3. **Check for existing Weekly Todo** — If `01_Execution/YYYY-[W]WW/Weekly Todo.md` already exists, stop and inform the user: "Week already initialized — Weekly Todo already exists at `01_Execution/YYYY-[W]WW/Weekly Todo.md`." Do not overwrite.
+3. **Check for existing Weekly Todo** — If `01_Execution/YYYY-[W]WW/Weekly Todo.md` already exists, switch to **update mode**: read the existing file and preserve all current items (both `[ ]` and `[x]`). New items discovered in Steps 4–5b will be merged — only add items not already present (deduplicate by semantic meaning against existing entries). Do not remove or reorder existing items. If the file does not exist, proceed in **create mode** (normal behavior).
 
 4. **Carry items from last week** — Two sources, both go into `### Unscheduled`:
 
@@ -55,7 +55,7 @@ Initialize the current week: create the week folder, carry unfinished items from
    - Write all carried/parsed items as a flat checklist directly under the title — no day sections.
    - If there are no items at all, leave a single empty `- [ ]` placeholder.
 
-7. **Create Blockers.md** — Check if `01_Execution/YYYY-[W]WW/Blockers.md` exists. If not, create it with standard frontmatter (`type: blockers`, `week: YYYY-[W]WW`, `date: YYYY-MM-DD`, `status: active`) and empty `## Waiting On` and `## Meetings` sections. If last week's `01_Execution/YYYY-[W](WW-1)/Blockers.md` exists:
+7. **Create or update Blockers.md** — Check if `01_Execution/YYYY-[W]WW/Blockers.md` exists. If not, create it with standard frontmatter (`type: blockers`, `week: YYYY-[W]WW`, `date: YYYY-MM-DD`, `status: active`) and empty `## Waiting On` and `## Meetings` sections. If it already exists, read it and switch to **update mode** — new items from last week's carry-forward and Steps 7b–7d will be merged without removing existing entries (deduplicate by semantic meaning). If last week's `01_Execution/YYYY-[W](WW-1)/Blockers.md` exists:
    - **`## Waiting On`**: carry forward any `[ ]` items, appending `(carried)` suffix to each. Do not carry `[x]` items.
    - **`## Meetings`**: carry forward `[ ]` meeting entries whose parsed date falls **within or after the new week** (i.e. rescheduled meetings). Parse the date from the bold text (e.g. `**Sat Mar 7, 8 PM**`). Carry the entry with its full sub-bullet agenda intact, and append `(rescheduled)` suffix to the top-level entry text. Discard: past-dated `[ ]` meetings (date before the new week's Monday), `[-]` (cancelled), and `[x]` (completed).
 
@@ -136,6 +136,6 @@ Flat list only — no day sections. `/daily-init` surfaces all uncompleted items
 
 ## Notes
 
-- This command is also auto-triggered by `/daily-init` when it detects no Weekly Todo for the current week.
+- This command is auto-triggered by `/daily-init` every day. If files already exist, it runs in update mode to merge new items (carried tasks, deadline injections, meetings) without overwriting.
 - After `/weekly-init` runs, the user should open the Weekly Todo and add or remove items before starting work.
 - Do not modify last week's Weekly Todo — it is a historical record.

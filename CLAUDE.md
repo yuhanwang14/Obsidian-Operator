@@ -22,8 +22,8 @@ It is not a software development project; there are no build systems, test runne
 01_Execution/           — active plans, sprints, decisions, daily/weekly ops
   YYYY-WXX/             — week subfolder (e.g. 2026-W08/)
     YYYY-MM-DD.md       — daily notes (created by Templater, moved here automatically)
-    Weekly Todo.md      — flat checklist for the week (created by /weekly-init)
-    Blockers.md         — cofounder deliverables + meeting agendas (created by /weekly-init, populated by /meeting)
+    Weekly Todo.md      — flat checklist for the week (created or updated by /weekly-init — merges new items if pre-created)
+    Blockers.md         — cofounder deliverables + meeting agendas (created or updated by /weekly-init, populated by /meeting)
     Weekly Review.md    — AI synthesis of the week (created by /weekly-review)
 02_Projects/            — per-project folders (e.g. ProjectAlpha, ProjectBeta)
   [Project]/

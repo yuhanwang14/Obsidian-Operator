@@ -76,8 +76,8 @@ Run `obsidian open path="00_Strategy/YYYY-QX/Monthly Pulse - MM.md"` to open the
 ### Step 1: Determine quarter
 Compute current quarter `YYYY-QX`. Create folder `00_Strategy/YYYY-QX/` if it doesn't exist.
 
-### Step 2: Guard
-If `00_Strategy/YYYY-QX/Quarterly Plan.md` already exists, stop: "Quarter already initialized."
+### Step 2: Check for existing plan
+If `00_Strategy/YYYY-QX/Quarterly Plan.md` already exists, switch to **update mode**: read the existing plan and use it as the starting point. Steps 3–4 still run to gather fresh context, but Step 5 merges new insights into the existing plan rather than writing from scratch. Preserve existing objectives and structure; add new items, update statuses, and incorporate any new context from sources. Inform the user: "Quarter already has a plan — updating with fresh context."
 
 ### Step 3: Read sources
 - `00_Strategy/YYYY Vision.md` — annual goals and themes (if exists)
@@ -103,8 +103,8 @@ Run `obsidian open path="00_Strategy/YYYY-QX/Quarterly Plan.md"` to open the fil
 ### Step 1: Determine quarter
 Default: last completed quarter. Compute `YYYY-QX`.
 
-### Step 2: Guard
-If `00_Strategy/YYYY-QX/Quarterly Review.md` already exists, stop: "Quarter already reviewed."
+### Step 2: Check for existing review
+If `00_Strategy/YYYY-QX/Quarterly Review.md` already exists, switch to **update mode**: read the existing review and use it as the starting point. Steps 3–4 still run to gather fresh data, and Step 5 merges new analysis into the existing review. Preserve existing assessments; enrich with additional context. Inform the user: "Quarter already has a review — updating with fresh context."
 
 ### Step 3: Read sources
 - `00_Strategy/YYYY-QX/Quarterly Plan.md` — what was planned

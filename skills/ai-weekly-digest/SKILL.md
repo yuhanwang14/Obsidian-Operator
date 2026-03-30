@@ -29,7 +29,7 @@ Examples:
   - If `YYYY-WXX` → target that specific week.
   - If no argument → Monday targets last week, other days target the current week.
 - Compute the week identifier as `YYYY-WXX` (ISO week) and its date range (Monday–Sunday).
-- **Guard:** If `04_Knowledge/AI-Weekly/YYYY-WXX - AI Weekly Digest.md` already exists, print "AI Weekly Digest for YYYY-WXX already exists — skipping." and stop.
+- **Guard:** If `04_Knowledge/AI-Weekly/YYYY-WXX - AI Weekly Digest.md` already exists, switch to **update mode**: read the existing digest and preserve its entries. Steps 2–5 still run to gather fresh data. In Step 6, merge new findings into the existing file — add new items to each section, but do not duplicate entries already present (deduplicate by title/repo name). Inform the user: "AI Weekly Digest for YYYY-WXX already exists — updating with fresh data."
 
 ## Step 2 — Gather open-source data from vault
 

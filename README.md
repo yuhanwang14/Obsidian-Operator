@@ -131,16 +131,16 @@ See [CLAUDE.md](CLAUDE.md) for full conventions, frontmatter spec, checkbox stat
 
 | Skill | Description |
 |-------|-------------|
-| `weekly-init` | Create week folder + Weekly Todo — carries items from last week, injects deadline tasks, populates Blockers from calendar |
+| `weekly-init` | Create or update week folder + Weekly Todo — carries items from last week, injects deadline tasks, populates Blockers from calendar. Merges into existing files without overwriting. |
 | `weekly-review` | AI synthesis of the week — progress, stalled items, patterns, intention tracking, horizon items, next-week focus |
-| `ai-weekly-digest` | Curated AI landscape digest from RSS feeds + web search — papers, big tech, startups, open-source, policy |
+| `ai-weekly-digest` | Curated AI landscape digest from RSS feeds + web search — papers, big tech, startups, open-source, policy. Merges new findings into existing digests. |
 
 ### Strategic Planning
 
 | Skill | Description |
 |-------|-------------|
-| `quarterly-plan` | Three modes: `init` (set quarterly goals), `review` (end-of-quarter synthesis), `pulse` (monthly checkpoint) |
-| `annual-vision` | Annual vision setting or year-end retrospective |
+| `quarterly-plan` | Three modes: `init` (set quarterly goals), `review` (end-of-quarter synthesis), `pulse` (monthly checkpoint). Init and review update existing files rather than aborting. |
+| `annual-vision` | Annual vision setting or year-end retrospective — reads existing files as baseline for updates |
 
 ### Knowledge & Synthesis
 
@@ -198,7 +198,7 @@ See [CLAUDE.md](CLAUDE.md) for full conventions, frontmatter spec, checkbox stat
                         │  0b. sync [x] → Deadline Plans (task queue) │
                         │  1.  (skip weekly transition)               │
                         │  1c. /quarterly-plan pulse (new month)      │
-                        │  2.  /weekly-init if missing                │
+                        │  2.  /weekly-init (update mode)             │
                         │  3.  briefing        (today's data)         │
                         │  4.  /daily-github   (trending repos)       │
                         │  5.  /content-extract (content ideas)       │
@@ -287,7 +287,7 @@ Cycle repeats
             ──► /quarterly-plan pulse (new-month boundary)
             ──► /quarterly-plan review (new-quarter boundary)
             ──► /quarterly-plan init (new-quarter boundary)
-            ──► /weekly-init (if missing)
+            ──► /weekly-init (always — update mode if exists)
             ──► /daily-github (post-briefing)
             ──► /content-extract (post-briefing, after daily-github)
             ──► /meeting-prep (tomorrow's meetings)
