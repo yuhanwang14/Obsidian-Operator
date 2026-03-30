@@ -254,13 +254,4 @@ Then automatically run `/daily-github` to fetch today's trending repos and appen
 
 ## Post-Briefing: Content Extract
 
-After `/daily-github` has run, scan yesterday's notes for publishable content ideas:
-
-1. Read yesterday's daily note, plus any knowledge notes (`04_Knowledge/`), thinking notes (`03_Thinking/`), AI digests, GitHub trending reports, and Substack newsletter emails received yesterday.
-2. For each note, evaluate: does it contain a non-obvious insight that maps to a content pillar (founder narrative, AI observer, builder workflow, personal reflection)?
-3. Append 0-3 content suggestions to `06_Content/Backlog.md` under `## Queue`, using the format:
-   `- [ ] **<pillar>** · <one-line hook> · [[source note]] · \`from:<origin>\``
-4. Deduplicate: skip any suggestion whose `[[source note]]` already appears in the backlog.
-5. If suggestions were added, append to today's `### Flags`:
-   `- **Content:** N new ideas added to backlog (pillar1, pillar2)`
-   If nothing was found, output nothing.
+After `/daily-github` has run, invoke `/content-extract` (the full skill) to scan yesterday's vault notes and Substack newsletter emails for publishable content ideas. Do not reimplement the logic here — the skill handles Gmail queries, vault scanning, evaluation, deduplication, and backlog appending.
