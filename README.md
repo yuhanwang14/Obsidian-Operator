@@ -160,7 +160,7 @@ See [CLAUDE.md](CLAUDE.md) for full conventions, frontmatter spec, checkbox stat
 | Skill | Description |
 |-------|-------------|
 | `content-extract` | Scan yesterday's notes and Substack newsletter emails for publishable insights — appends 0-3 ideas to `06_Content/Backlog.md` with pillar tags. Integrated into `/daily-init` post-briefing. Also includes catch-up pass for unscanned this-week notes. |
-| `content-draft` | Generate platform-specific drafts from backlog items or notes — LinkedIn (delegates to `linkedin-content`), Twitter/X threads, non-technical articles (uses Voice Guide), technical blogs (delegates to `technical-blog-writing`), newsletters |
+| `content-draft` | Generate platform-specific drafts from backlog items or notes — presents backlog sorted by priority (P1 own thinking > P2 summaries > P3 external). Formats: LinkedIn (delegates to `linkedin-content`), Twitter/X threads, non-technical articles (uses Voice Guide), technical blogs (delegates to `technical-blog-writing`), newsletters |
 
 ### Vault Maintenance
 

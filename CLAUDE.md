@@ -40,7 +40,7 @@ It is not a software development project; there are no build systems, test runne
   AI-Weekly/            — weekly AI landscape digests (created by /ai-weekly-digest)
 05_Archive/             — inactive or completed material
 06_Content/             — content backlog, drafts, and published archive
-  Backlog.md            — master content idea queue with pillar tags (created by /content-extract, includes newsletter ideas)
+  Backlog.md            — master content idea queue with pillar tags, priority-sorted by origin (P1 thinking/daily/decision > P2 synthesize/meeting > P3 newsletter/github/ai-weekly)
   Voice Guide.md        — per-format voice profiles for /content-draft
   Drafts/               — platform-specific draft folders (created by /content-draft)
   Published/            — archived published items

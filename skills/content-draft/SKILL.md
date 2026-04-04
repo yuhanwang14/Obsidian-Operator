@@ -20,7 +20,29 @@ Three input modes:
 ## Step 1 — Resolve source material
 
 ### Mode 1: From backlog (no args)
-Read `06_Content/Backlog.md`. Present all `[ ]` items from `## Queue` to the user as a numbered list. Ask which item to draft. Read the selected item's `[[source note]]` link.
+Read `06_Content/Backlog.md`. Collect all `[ ]` items from `## Queue` and sort them by priority tier based on their `from:` origin tag:
+
+| Priority | Label | Origin tags |
+|----------|-------|-------------|
+| P1 | Your thinking & reflections | `from:thinking`, `from:daily`, `from:decision` |
+| P2 | Your summaries | `from:synthesize`, `from:meeting` |
+| P3 | External content | `from:newsletter`, `from:daily-github`, `from:ai-weekly-digest` |
+
+Present items grouped by tier with continuous numbering:
+
+```
+**P1 — Your thinking & reflections**
+1. **Founder narrative** · The question every VC asked... · [[2026-04-02]] · `from:daily`
+2. **Personal reflection** · Why I stopped optimizing... · [[Deep Work Note]] · `from:thinking`
+
+**P2 — Your summaries**
+3. **AI observer** · Claude's context window changes... · [[Meeting Knowledge/...]] · `from:meeting`
+
+**P3 — External content**
+4. **Builder workflow** · Four agent frameworks... · [[GitHub Trending]] · `from:daily-github`
+```
+
+Within each tier, maintain original backlog order (FIFO). Skip empty tiers. Ask which item to draft. Read the selected item's `[[source note]]` link.
 
 ### Mode 2: Direct note (path arg)
 Read the specified note directly.
