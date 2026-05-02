@@ -5,15 +5,15 @@
     "email": "yuhanwang14@github.com"
   },
   "metadata": {
-    "description": "Obsidian Operator — an AI-native personal operating system built on Obsidian + Claude Code",
-    "version": "1.8.0"
+    "description": "Obsidian Operator — an AI-native personal operating system built on Obsidian, supporting Claude Code (primary) and Codex CLI",
+    "version": "1.9.0"
   },
   "plugins": [
     {
       "name": "obsidian-operator",
       "source": "./",
-      "description": "All 18 Operator skills — daily ops, weekly planning, strategic reviews, meetings, projects, deep research, and content engine with newsletter scanning.",
-      "version": "1.8.0"
+      "description": "All 20 Operator skills (19 production + 1 cross-platform reference) — daily ops, weekly planning, strategic reviews, meetings, projects, deep research, and content engine. Supports Claude Code and Codex CLI.",
+      "version": "1.9.0"
     }
   ]
 }

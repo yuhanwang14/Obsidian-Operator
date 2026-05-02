@@ -1,7 +1,7 @@
 {
   "name": "obsidian-operator",
-  "version": "1.8.0",
-  "description": "AI-native personal operating system for Obsidian — 19 skills for vault setup, daily briefings, arXiv paper scanning, weekly reviews, strategic planning, meeting processing, deadline tracking, deep research, and content engine with newsletter scanning.",
+  "version": "1.9.0",
+  "description": "AI-native personal operating system for Obsidian — 20 skills (19 production + 1 cross-platform reference) for vault setup, daily briefings, arXiv paper scanning, weekly reviews, strategic planning, meeting processing, deadline tracking, deep research, and content engine. Supports Claude Code and Codex CLI.",
   "author": {
     "name": "Yuhan Wang",
     "url": "https://github.com/yuhanwang14"
