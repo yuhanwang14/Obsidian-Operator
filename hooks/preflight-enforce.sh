@@ -43,6 +43,11 @@ elif [ -d "$(pwd)/00_Strategy" ]; then
   VAULT="$(pwd)"
 elif [ -d "$HOME/Obsidian/Operator/00_Strategy" ]; then
   VAULT="$HOME/Obsidian/Operator"
+elif [ -n "${CODEX_HOME:-}" ] && [ -d "${CODEX_HOME}/worktrees" ]; then
+  for w in "${CODEX_HOME}"/worktrees/*/; do
+    [ -d "${w}00_Strategy" ] && VAULT="${w%/}" && break
+  done
+  [ -z "$VAULT" ] && exit 0
 else
   # Can't locate vault — exit silently rather than block
   exit 0
