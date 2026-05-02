@@ -1,8 +1,10 @@
 # Obsidian-Operator — Repo Guide for Agents
 
-You're editing the source of a personal Claude Code plugin: 19 skills that automate an Obsidian-based personal operating system. Single maintainer (`@yuhanwang14`), Claude Code only, MIT licensed.
+> **Note:** `AGENTS.md` at the repo root is a symlink to this file. Codex reads `AGENTS.md` natively; Claude Code reads `CLAUDE.md`. Both load the same content. The same symlink pattern exists in `skills/vault-init/assets/` for the user-runtime config.
 
-This file is for agents working on **this repo** (the plugin code). The CLAUDE.md inside `skills/vault-init/assets/vault-template/` is a *different* file — it ships into the user's Obsidian vault and configures the agent at vault-runtime. Don't confuse them.
+You're editing the source of a personal Obsidian-Operator plugin: 19 production skills + 1 cross-platform reference skill that automate an Obsidian-based personal operating system. Single maintainer (`@yuhanwang14`); supports Claude Code (primary) and Codex CLI; MIT licensed.
+
+This file is for agents working on **this repo** (the plugin code). The `CLAUDE.md` inside `skills/vault-init/assets/` is a *different* file — it ships into the user's Obsidian vault and configures the agent at vault-runtime. Don't confuse them.
 
 ## When in doubt
 

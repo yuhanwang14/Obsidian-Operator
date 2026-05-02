@@ -134,7 +134,7 @@ If the skill is part of a chain (e.g. `daily-init` auto-triggers `content-extrac
 - **No frontmatter `version`.** Plugin-level versioning only.
 - **Procedural step-by-step bodies are fine.** Superpowers warns against this for behavior-shaping skills (TDD, debugging) because it produces brittle compliance. Our skills are domain automation — the steps *are* the skill — so step-by-step is the right shape.
 - **No TDD-for-skills with subagent pressure tests.** Appropriate for general-purpose discipline skills; overkill for personal Obsidian automation. Live-vault dry-runs are sufficient.
-- **No multi-platform variants.** Claude Code only. We don't ship to Codex, Cursor, Gemini, OpenCode.
+- **Claude Code primary, Codex CLI supported.** Skills should reference platform-neutral concepts ("file edit operation" not "Edit tool"). Where a skill genuinely needs platform-specific syntax (e.g. `deep-research` dispatching parallel agents), document both Claude Code and Codex CLI variants inline, and offload deeper mappings to `skills/using-obsidian-operator/references/codex-tools.md`. Codex App, Cursor, Gemini, OpenCode are not supported.
 - **No flowcharts unless decisions are non-obvious.** Tables and bullet lists win for reference content.
 
 ## Pre-merge checklist
