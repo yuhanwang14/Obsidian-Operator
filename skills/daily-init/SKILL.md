@@ -177,7 +177,7 @@ Glob for all `02_Projects/**/Deadline Plan.md` files (recursive — catches nest
 
 **Action Items:** Show: `[Project/Subject] <next queue task> — Xh left this week`. In `## Schedule`, allocate a single time block for deadline work based on the daily share. No partial-task fractions — just schedule the task with a reasonable block. The user adjusts the schedule to their preference.
 
-4. **Gmail** — Use the claude.ai Gmail MCP (`mcp__claude_ai_Gmail__gmail_search_messages`) to search for **all emails received today** (query: `newer_than:1d`, NOT `is:unread`). Always fetch all emails regardless of read status — reading an email ≠ task done. Summarize actionable items and note total count (N emails today).
+4. **Gmail** — Search Gmail using the Gmail MCP available in your environment (claude.ai Gmail on Claude Code; Google Workspace MCP / Composio Gmail / Nylas on Codex CLI — see `using-obsidian-operator/references/codex-mcp.md`). Query: `newer_than:1d`, NOT `is:unread`. Always fetch all emails regardless of read status — reading an email ≠ task done. Summarize actionable items and note total count (N emails today). **Fallback:** if no Gmail MCP is configured, skip this step and add `⚠️ Gmail MCP not configured` to `### Flags` — the briefing still produces.
 
 **Note:** Do NOT query Outlook MCP for calendar or email. Outlook calendar is handled via ICS plugin in Day Planner.
 
