@@ -8,7 +8,7 @@ Operator is an opinionated system of 19 Claude Code skills that turn an Obsidian
 
 ### 1. Install the plugin
 
-Install as a Claude Code plugin (recommended — includes auto-updates):
+**Claude Code** (recommended — includes auto-updates):
 
 ```bash
 # Add the marketplace and install (auto-updates enabled)
@@ -16,13 +16,15 @@ Install as a Claude Code plugin (recommended — includes auto-updates):
 /plugin install obsidian-operator
 ```
 
+**Codex CLI**: clone + symlink + register hook. See [`.codex/INSTALL.md`](.codex/INSTALL.md) for the 6-step install. After install, run `/vault-init` exactly as below.
+
 ### 2. Initialize the vault
 
 Open your (empty or existing) Obsidian vault directory and run:
 
 ```bash
 cd /path/to/your/vault
-claude
+claude       # or: codex
 
 /vault-init
 ```
@@ -54,7 +56,7 @@ cp    obsidian-operator/skills/vault-init/assets/CLAUDE.md         /path/to/your
 | Requirement | Required | Notes |
 |-------------|----------|-------|
 | [Obsidian](https://obsidian.md) | Yes | The vault app |
-| [Claude Code](https://claude.ai/code) | Yes | CLI for Claude |
+| [Claude Code](https://claude.ai/code) **or** [Codex CLI](https://developers.openai.com/codex/cli) | Yes | One required. See [Codex install](.codex/INSTALL.md) and [docs/README.codex.md](docs/README.codex.md) for Codex CLI specifics. |
 | [Day Planner](https://github.com/ivan-lednev/obsidian-day-planner) plugin | Recommended | Time-blocking in daily notes |
 | [Obsidian CLI](https://github.com/Obsidian-TTRPG-Community/obsidian-cli) | Recommended | Skills fall back to file tools if unavailable |
 | [ffmpeg](https://ffmpeg.org/) | Optional | For `/meeting` auto-transcription (`brew install ffmpeg`) |
@@ -69,7 +71,11 @@ Two integrations live outside Claude Code and need a one-time setup of their own
 
 ### Gmail MCP (optional — for `/daily-init`)
 
-Connect your Google account under **Claude Code settings → MCP integrations** and grant Gmail read access. If not configured, `/daily-init` silently skips the email section.
+**Claude Code:** Connect your Google account under **Claude Code settings → MCP integrations** and grant Gmail read access.
+
+**Codex CLI:** Configure a Gmail MCP server in `~/.codex/config.toml`. Three compatible options (Google Workspace MCP, Composio Gmail, Nylas) — see [`docs/README.codex.md`](docs/README.codex.md) for setup snippets and tool-name differences.
+
+If not configured (either platform), `/daily-init` silently skips the email section and `/content-extract` skips the newsletter step.
 
 ### Apple Calendar & Reminders (macOS only — for `/deadline-plan`, `/quarterly-plan`, `/add-events`)
 
@@ -287,7 +293,7 @@ Cycle repeats
 This is an opinionated system — the vault structure, note conventions, and skill behaviors are designed to work together. To customize:
 
 1. **CLAUDE.md** is the configuration layer. Edit folder paths, frontmatter fields, checkbox states, or agent behavior in your vault's `CLAUDE.md`.
-2. **Individual skills** — for durable changes, fork this repo and install from your fork. Editing files in `~/.claude/plugins/cache/obsidian-operator/…` works for quick experiments but gets overwritten on plugin update.
+2. **Individual skills** — for durable changes, fork this repo and install from your fork. Editing files in `~/.claude/plugins/cache/obsidian-operator/…` (Claude Code) or `~/.codex/obsidian-operator/skills/…` (Codex CLI) works for quick experiments. Claude Code overwrites its cache on plugin update; Codex's clone is yours to maintain via `git pull`.
 3. **Vault structure** can be extended — add new folders as needed. Avoid renaming the core 6 folders without updating CLAUDE.md and skill references.
 
 ## Contributing
