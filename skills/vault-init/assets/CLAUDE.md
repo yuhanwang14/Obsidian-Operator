@@ -1,8 +1,8 @@
 # CLAUDE.md
 
-> **Setup:** Copy this file into your Obsidian vault root to configure Claude Code for the Operator system.
+> **Setup:** Copy this file (and `AGENTS.md` sibling) into your Obsidian vault root to configure your AI agent (Claude Code reads `CLAUDE.md`; Codex CLI reads `AGENTS.md`) for the Operator system.
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to AI agents (Claude Code, Codex CLI) when operating on this Obsidian vault.
 
 ## Repository Overview
 
@@ -132,10 +132,10 @@ The Obsidian CLI (`obsidian`) is available in PATH and requires the Obsidian app
 - Daily note operations: `obsidian daily:path`, `obsidian daily:read`, `obsidian daily:append content="..."`
 
 **Keep file tools for:**
-- Full-file rewrites (Write tool) — Weekly Review, project notes, knowledge notes
-- Heading-targeted inserts (Edit tool) — briefing into daily note, digest into Weekly Review
-- Creating new structured notes (Write tool)
-- Reading files during synthesis (Read tool)
+- Full-file rewrites — Weekly Review, project notes, knowledge notes
+- Heading-targeted inserts — briefing into daily note, digest into Weekly Review
+- Creating new structured notes
+- Reading files during synthesis
 
 **Fallback rule:** If CLI fails (e.g. Obsidian not running), silently fall back to the equivalent file tool. Do not surface the error to the user.
 

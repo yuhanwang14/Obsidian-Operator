@@ -30,9 +30,17 @@ The Quick Start + Configuration sections of the README (`cp -r vault-template/*`
    # 3. marketplace checkout — flat, no version dir
    [ -d ~/.claude/plugins/marketplaces/obsidian-operator ] \
      && echo ~/.claude/plugins/marketplaces/obsidian-operator/skills/vault-init/assets
+
+   # 4. Codex CLI symlink target — readlink -f resolves to clone path
+   [ -L ~/.agents/skills/obsidian-operator ] \
+     && echo "$(readlink -f ~/.agents/skills/obsidian-operator)/vault-init/assets"
+
+   # 5. Codex CLI clone path (fallback if symlink missing)
+   [ -d ~/.codex/obsidian-operator/skills/vault-init/assets ] \
+     && echo ~/.codex/obsidian-operator/skills/vault-init/assets
    ```
 
-   Use the first path that exists **and** contains both `vault-template/` and `CLAUDE.md`. If none do, ask the user: "I can't find the vault-init assets. Did you install via `/plugin install obsidian-operator`, or do you have a local clone of the repo? (paste path to the repo root, and I'll look inside `skills/vault-init/assets/`)"
+   Use the first path that exists **and** contains both `vault-template/` and `CLAUDE.md`. If none do, ask the user: "I can't find the vault-init assets. Did you install via `/plugin install obsidian-operator` (Claude Code) or follow `.codex/INSTALL.md` to clone into `~/.codex/obsidian-operator` (Codex CLI)? (Paste path to the repo root and I'll look inside `skills/vault-init/assets/`.)"
 
    If the user gives a local repo path, append `skills/vault-init/assets` and verify the two files are there before proceeding.
 
@@ -71,14 +79,17 @@ Skipped:  05_Content/ (already existed)
 
 ## Step 4 — Install CLAUDE.md
 
-Copy the plugin's `CLAUDE.md` into the vault root using no-clobber:
+Copy the plugin's `CLAUDE.md` into the vault root using no-clobber, then write the same content to `AGENTS.md` (Codex reads `AGENTS.md` natively):
 
 ```bash
 cp -n "<assets>/CLAUDE.md" "<vault_path>/CLAUDE.md"
+cp -n "<assets>/CLAUDE.md" "<vault_path>/AGENTS.md"
 ```
 
-- If the vault didn't have `CLAUDE.md`, it gets installed.
-- If the vault already has one (likely customized by the user earlier), `cp -n` leaves it alone. Mention this briefly to the user: "Existing CLAUDE.md preserved — I'll still update the Customization table in Step 5."
+- If the vault didn't have `CLAUDE.md` / `AGENTS.md`, they get installed (identical content).
+- If the vault already has either, `cp -n` leaves it alone. Mention this briefly to the user: "Existing CLAUDE.md / AGENTS.md preserved — I'll still update the Customization table in Step 5."
+
+The vault gets two identical files: `CLAUDE.md` (read by Claude Code) and `AGENTS.md` (read by Codex CLI). If the user later customizes one, they should sync the change into the other — drift means agents on different platforms see different vault config (see `docs/README.codex.md` for the drift warning).
 
 The installed `CLAUDE.md` is the configuration layer for every other skill — it's where folder paths, vault owner name, and calendar names live.
 
@@ -135,7 +146,10 @@ If **skip** or **later**: note in the final summary that `/meeting` still works 
 
 Don't configure these — they're handled outside Claude Code. Just surface them in the final summary so the user knows they exist:
 
-- **Gmail MCP** (for `/daily-init` email section): "Connect Google in Claude Code settings → MCP integrations if you want email in your daily briefing."
+- **Gmail MCP** (for `/daily-init` email section):
+  - Claude Code: "Connect Google in Claude Code settings → MCP integrations."
+  - Codex CLI: "Configure a Gmail MCP server in `~/.codex/config.toml` — see `docs/README.codex.md` for compatible options (Google Workspace MCP, Composio Gmail, Nylas)."
+  - Skip if you don't need email in daily briefings — `/daily-init` will silently degrade.
 - **Apple Calendar / Reminders** (macOS only): "`/deadline-plan` and `/add-events` will use the calendar/list names you just set. No OS setup needed."
 
 ## Step 8 — Day-1 onboarding chain
@@ -203,7 +217,7 @@ Customized:
 
 Optional (status):
   - Gemini transcription: <installed | skipped>
-  - Gmail MCP: configure in Claude Code settings
+  - Gmail MCP: <configured | configure in Claude Code settings or ~/.codex/config.toml>
   - Apple Calendar: ready (macOS)
 
 Day-1 onboarding:
