@@ -13,6 +13,7 @@ Thumbs.db
 
 # Internal planning
 docs/plans/
+docs/specs/
 
 # Obsidian (vault-specific, not part of the template)
 .obsidian/workspace.json
