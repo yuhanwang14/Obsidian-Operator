@@ -132,7 +132,7 @@ Ask the user to confirm before writing. Accept:
 
 ### Step 4: Write changes
 
-For each confirmed file, apply the link insertions. Use the Edit tool for surgical replacements — replace the exact unlinked mention with the `[[wiki-link]]` version.
+For each confirmed file, apply the link insertions. Use the platform's file edit operation for surgical replacements — replace the exact unlinked mention with the `[[wiki-link]]` version.
 
 **Insertion rules:**
 - Only wrap the first occurrence of each term per file (avoid over-linking)

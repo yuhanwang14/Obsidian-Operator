@@ -113,7 +113,7 @@ The Quarterly Plan is a **living document**, not a frozen snapshot. After writin
 
 **No-revisions case:** If the pulse assessment found nothing to revise, skip Step 7 entirely. Add a one-line note to the Pulse: "Plan unchanged — no revisions this month."
 
-**Editing convention:** Use the Edit tool (Read-then-Edit), not Write — preserves the Locked Original section and any manual user edits to Current State that weren't captured in this pulse.
+**Editing convention:** Use the platform's file edit operation (read-then-edit, not full rewrite) — preserves the Locked Original section and any manual user edits to Current State that weren't captured in this pulse.
 
 ### Step 8: Open the pulse + the revised plan
 Run `obsidian open path="00_Strategy/YYYY-QX/Monthly Pulse - MM.md"` to open the pulse. If Step 7 wrote revisions, ALSO `obsidian open path="00_Strategy/YYYY-QX/Quarterly Plan.md"` so the user sees what changed.

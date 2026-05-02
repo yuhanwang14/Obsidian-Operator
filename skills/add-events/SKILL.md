@@ -131,7 +131,7 @@ For all-day events:
   1. Read or create `01_Execution/YYYY-WXX/Blockers.md` (with standard frontmatter + empty `## Waiting On` and `## Meetings` sections if new)
   2. **Deduplicate** against existing `## Meetings` entries by date + fuzzy title match
   3. Append to `## Meetings` in chronological order, using the same entry format as Step 6 with source attribution `[<project>]`
-  4. Use obsidian CLI (`obsidian append`) with Edit tool fallback
+  4. Use obsidian CLI (`obsidian append`) with file edit fallback
 - Mark consumed events in `Upcoming Events.md`: replace `- [ ]` with `- [x] consumed YYYY-WXX:` on that line
 
 ### Step 8 — Report summary

@@ -18,7 +18,7 @@ Optional: `last` (review last week) or `YYYY-WXX` (specific week). Default: curr
    - Carried-forward items (`[>]`)
    - The `## Plan > ### This week` block — these are week-scope intentions the user wrote
 
-3. **Read the Weekly Todo** — Read `01_Execution/YYYY-[W]WW/Weekly Todo.md`. For structured task status, use `obsidian tasks done path="01_Execution/YYYY-WXX/Weekly Todo.md"` and `obsidian tasks todo path="01_Execution/YYYY-WXX/Weekly Todo.md"` to get done/open lists. Fallback: read the file directly with Read tool.
+3. **Read the Weekly Todo** — Read `01_Execution/YYYY-[W]WW/Weekly Todo.md`. For structured task status, use `obsidian tasks done path="01_Execution/YYYY-WXX/Weekly Todo.md"` and `obsidian tasks todo path="01_Execution/YYYY-WXX/Weekly Todo.md"` to get done/open lists. Fallback: read the file directly with the platform's file read operation.
    - `[x]` → done ✅
    - `[ ]` → not done ❌
    - Use this to populate `### Week Intentions Captured` with accurate ✅ / ❌ / ⬜ status.
