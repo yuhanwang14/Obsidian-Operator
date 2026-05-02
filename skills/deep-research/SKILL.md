@@ -62,12 +62,17 @@ Each thread gets:
 
 ## Step 4 — Execute parallel research
 
-Spawn one Agent per thread using the Agent tool. **All agents launch in a single message** so they run in parallel.
+Dispatch one research agent per thread, **all in a single batch** so they run in parallel.
+
+**Platform syntax:**
+
+- **Claude Code:** Use the `Agent` tool, multiple calls in one message, `model: "opus"` for each agent.
+- **Codex CLI:** Use `spawn_agent(agent_type="worker", message=...)` for each thread in one message, then `wait` to collect results, then `close_agent` per agent. Requires `[features] multi_agent = true` in `~/.codex/config.toml` — see `using-obsidian-operator/references/codex-tools.md` for full setup and message-framing template. **Fallback:** if `multi_agent` is not enabled (`spawn_agent` errors), execute threads sequentially in the parent agent and emit a one-line note: `"Running threads sequentially — enable [features] multi_agent = true in ~/.codex/config.toml for parallel."`
 
 Each agent's prompt must include:
 1. The overall research brief (for context)
 2. Its specific thread question and search strategy hints
-3. Instructions to use WebSearch and WebFetch extensively — aim for **5-10 high-quality sources per thread**
+3. Instructions to use `WebSearch` and `WebFetch` extensively — aim for **5–10 high-quality sources per thread**
 4. Instructions to return:
    - **Thread:** [name]
    - **Key findings:** bulleted list of substantive findings with source URLs
@@ -75,13 +80,17 @@ Each agent's prompt must include:
    - **Surprises:** anything that contradicted initial assumptions
    - **Gaps:** what couldn't be answered
 
-Use `model: "opus"` for each agent.
-
 If a thread returns thin results (fewer than 3 substantive findings), note it — the synthesis step will flag it as a gap.
 
 ## Step 5 — Synthesize and write the report
 
-After all agents return, spawn **one final Opus agent** to do the synthesis. Its prompt must include:
+After all thread agents return, dispatch **one final synthesis agent**.
+
+**Platform syntax:**
+- **Claude Code:** `Agent` tool, single call, `model: "opus"`.
+- **Codex CLI:** single `spawn_agent(agent_type="worker", message=...)` + `wait` + `close_agent`. (`multi_agent` feature must be enabled, same as Step 4.)
+
+The synthesis agent's prompt must include:
 1. The research brief
 2. All thread results (full text from each agent)
 3. Instructions below
